@@ -542,11 +542,13 @@ function mostrarMensaje() {
   </script>
   
 <script>
+document.addEventListener("DOMContentLoaded", function() {
+
   const form = document.getElementById("asistenciaForm");
   const mensaje = document.getElementById("mensajeConfirmacion");
 
   form.addEventListener("submit", function(e) {
-    e.preventDefault(); // 👈 evita recarga
+    e.preventDefault(); // evita recarga
 
     const data = new FormData(form);
 
@@ -554,14 +556,19 @@ function mostrarMensaje() {
       method: "POST",
       body: data
     })
-    .then(() => {
-      form.reset(); // limpia
-      mensaje.style.display = "block"; // muestra mensaje
+    .then(response => {
+      if (response.ok) {
+        form.reset(); // 👈 limpia
+        mensaje.style.display = "block"; // 👈 muestra mensaje
+      }
     })
     .catch(error => {
       console.error("Error:", error);
     });
+
   });
+
+});
 </script>
   
 
