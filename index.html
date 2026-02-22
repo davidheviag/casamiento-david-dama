@@ -86,55 +86,54 @@ section{
   transition: transform 0.5s ease, letter-spacing 0.5s ease;
 }
 
-/* COUNTDOWN */
-.countdown-section{
-  background:white;
-  font-family:Georgia, serif;
-}
-
-.titulo-seccion{
-  font-size:42px;
-  margin-bottom:60px;
-  color:var(--titulo-color);
-  font-weight:400;
-}
-
-/* Countdown en línea sin scroll */
+/* Countdown en línea correctamente */
 .countdown{
   display:flex;
   justify-content:center;
-  gap:10px;
+  gap:15px;
   flex-wrap:nowrap;
 }
 
 .countdown .box{
-  flex:1;
-  min-width:60px;
-  background:white;
+  flex: 0 1 80px; /* crece si hay espacio, pero mínimo 80px */
+  min-width: 80px;
+  max-width: 120px; /* evita que se estiren demasiado */
   padding:20px;
   border-radius:18px;
+  background:white;
   box-shadow:0 10px 30px rgba(0,0,0,0.1);
   text-align:center;
   transition: all 0.3s ease;
   border: 2px solid rgba(223, 232, 220, 0.6);
 }
 
-.countdown .box:hover {
-  transform: scale(1.03);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-}
-
-.countdown .box h3 {
+.countdown .box h3{
   color: var(--icon-btn-color);
-  font-size:55px;
+  font-size:40px; /* reducido para que no se salga de la caja */
+  margin:0;
   animation: pulse 2.5s ease-in-out infinite;
 }
 
-.countdown .box p {
-  font-size:18px;
+.countdown .box p{
+  font-size:16px;
+  margin:0;
   color: var(--verde);
 }
 
+/* Ajuste extra para móviles */
+@media(max-width:500px){
+  .countdown .box{
+    flex:0 1 60px;
+    min-width:60px;
+    padding:15px;
+  }
+  .countdown .box h3{
+    font-size:28px;
+  }
+  .countdown .box p{
+    font-size:12px;
+  }
+}
 /* DETALLES */
 .detalles{
   background:var(--crema);
