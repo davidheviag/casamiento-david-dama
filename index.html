@@ -461,13 +461,10 @@ textarea{
     <form id="asistenciaForm"
       action="https://script.google.com/macros/s/AKfycbwtqryMNTni9qIFppo8JP2QiiMwKoxtgamgd6s2gLmXT8Z8nxx8O_O5z08onvrxoRla/exec"
       method="POST"
-      target="hidden_iframe">
+
 
     
 
-      <iframe name="hidden_iframe" style="display:none;"></iframe>
-
-      <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
       
       <label for="nombres">Nombres</label>
       <input type="text" id="nombres" name="nombres" required>
@@ -546,21 +543,24 @@ function mostrarMensaje() {
   
 <script>
   const form = document.getElementById("asistenciaForm");
-  const iframe = document.getElementById("hidden_iframe");
   const mensaje = document.getElementById("mensajeConfirmacion");
 
-  let enviado = false;
+  form.addEventListener("submit", function(e) {
+    e.preventDefault(); // 👈 evita recarga
 
-  form.addEventListener("submit", function() {
-    enviado = true;
-  });
+    const data = new FormData(form);
 
-  iframe.addEventListener("load", function() {
-    if (enviado) {
-      form.reset(); // limpia el formulario
-      mensaje.style.display = "block"; // muestra el mensaje
-      enviado = false; // reinicia el estado
-    }
+    fetch(form.action, {
+      method: "POST",
+      body: data
+    })
+    .then(() => {
+      form.reset(); // limpia
+      mensaje.style.display = "block"; // muestra mensaje
+    })
+    .catch(error => {
+      console.error("Error:", error);
+    });
   });
 </script>
   
