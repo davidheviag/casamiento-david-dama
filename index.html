@@ -461,8 +461,9 @@ textarea{
     <form id="asistenciaForm"
       action="https://script.google.com/macros/s/AKfycbwtqryMNTni9qIFppo8JP2QiiMwKoxtgamgd6s2gLmXT8Z8nxx8O_O5z08onvrxoRla/exec"
       method="POST"
-      target="hidden_iframe"
-      onsubmit="mostrarMensaje()">
+      target="hidden_iframe">
+
+    
 
       <iframe name="hidden_iframe" style="display:none;"></iframe>
       
@@ -492,7 +493,9 @@ textarea{
   <h2>Dama & David</h2>
   <p>10 de Octubre 2026</p>
 </section>
-
+ 
+ 
+  
 <script>
 const fechaBoda = new Date("2026-10-10T16:30:00").getTime();
 const countdownInterval = setInterval(function(){
@@ -530,6 +533,15 @@ function mostrarMensaje() {
   }, 1000);
 }
 </script>
+
+<script>
+    document.getElementById("asistenciaForm").addEventListener("submit", function() {
+      setTimeout(function() {
+        document.getElementById("mensajeConfirmacion").style.display = "block";
+      }, 500);
+    });
+  </script>
+  
   
 </body>
 </html>
