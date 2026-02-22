@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>David & Dama - ¡Nos Casamos!</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --verde-claro:#dfe8dc;
+  --verde:#6b7d5c;
+  --verde-oscuro:#4e5f45;
+  --crema:#f4f1ea;
+  --icon-btn-color:#8a9e78;
+  --titulo-color:#4a5c3e;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:'Cinzel', serif;
+  color:#333;
+  text-align:center;
+  line-height:1.8;
+}
+
+section{
+  padding:110px 20px;
+}
+
+.bloque{
+  max-width:1000px;
+  margin:auto;
+}
+
+/* HERO */
+.hero{
+  background:var(--verde-claro);
+}
+
+.floral-img{
+  width:380px;
+  max-width:90%;
+  height:auto;
+  display:block;
+  margin:0 auto 25px auto;
+  opacity:0.9;
+  animation: floatFlower 6s ease-in-out infinite;
+}
+
+.nombres{
+  font-family:'Great Vibes', cursive;
+  font-size:90px;
+  color:var(--verde-oscuro);
+  opacity: 0;
+  animation: fadeUp 1.2s ease forwards 0.5s;
+  transition: transform 0.5s ease, letter-spacing 0.5s ease;
+}
+
+.amp{
+  font-family:'Cinzel', serif;
+  color:var(--verde);
+  font-size:55px;
+  margin:0 15px;
+}
+
+.casamos{
+  margin-top:25px;
+  font-size:30px;
+  letter-spacing:3px;
+  color:var(--verde);
+  opacity: 0;
+  animation: fadeUp 1.2s ease forwards 1s;
+  transition: transform 0.5s ease, letter-spacing 0.5s ease;
+}
+
+.fecha{
+  margin-top:25px;
+  font-size:26px;
+  color:var(--verde-oscuro);
+  opacity: 0;
+  animation: fadeUp 1.2s ease forwards 1.3s;
+  transition: transform 0.5s ease, letter-spacing 0.5s ease;
+}
+
+/* COUNTDOWN */
+.countdown-section{
+  background:white;
+  font-family:Georgia, serif;
+}
+
+.titulo-seccion{
+  font-size:42px;
+  margin-bottom:60px;
+  color:var(--titulo-color);
+  font-weight:400;
+}
+
+.countdown{
+  display:flex;
+  justify-content:center;
+  gap:50px;
+  flex-wrap:wrap;
+  font-family:'Cinzel', serif;
+}
+
+/* CUENTA REGRESIVA - Mejorada */
+.box {
+  background: white; /* Mantiene tu fondo actual */
+  padding: 45px;
+  border-radius: 18px;
+  min-width: 150px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Sombra más profunda */
+  transition: all 0.3s ease;
+  border: 2px solid rgba(223, 232, 220, 0.6); /* contorno verde clarito */
+}
+
+/* Efecto al pasar el mouse */
+.box:hover {
+  transform: scale(1.03); /* se agranda suavemente */
+  box-shadow: 0 20px 50px rgba(0,0,0,0.15); /* sombra más pronunciada al hover */
+}
+
+/* Animación de pulso suave en los números */
+.box h3 {
+  color: var(--icon-btn-color);
+  font-size: 55px;
+  animation: pulse 2.5s ease-in-out infinite;
+}
+
+/* Pulso */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); } /* crece un 5% suavemente */
+}
+
+/* Los títulos debajo de cada número */
+.box p {
+  font-size: 18px;
+  color: var(--verde);
+}
+
+/* DETALLES */
+.detalles{
+  background:var(--crema);
+  font-family:Georgia, serif;
+}
+
+.cards{
+  display:flex;
+  justify-content:center;
+  gap:40px;
+  flex-wrap:wrap;
+}
+
+.card{
+  background:white;
+  padding:45px;
+  width:260px;
+  border-radius:15px;
+  box-shadow:0 8px 25px rgba(0,0,0,0.05);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  transition:all 0.3s ease;
+  border: 2px solid rgba(223, 232, 220, 0.6); /* contorno verde clarito */
+}
+
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 18px 40px rgba(0,0,0,0.08);
+}
+
+.event-icon{
+  width:40px;
+  height:40px;
+  color:var(--icon-btn-color);
+  margin-bottom:15px;
+}
+
+.card h3{
+  font-size:22px;
+  margin-bottom:10px;
+  color:var(--titulo-color);
+  font-weight:400;
+}
+
+/* BOTONES MEJORADOS */
+.btn{
+  display:inline-block;
+  margin-top:30px;
+  padding:16px 40px;
+  background:var(--icon-btn-color);
+  color:white;
+  text-decoration:none;
+  border-radius:40px;
+  font-size:18px;
+  transition:all 0.25s ease;
+  border:2px solid var(--icon-btn-color);
+  cursor:pointer;
+}
+
+.btn:hover{
+  background:white;
+  color:var(--icon-btn-color);
+  transform:translateY(-3px);
+  box-shadow:0 12px 30px rgba(0,0,0,0.08);
+}
+
+button.btn{
+  border:none;
+}
+
+/* MAPA CON LOADER */
+.mapa-container {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  height: 400px;
+}
+
+.mapa-container iframe {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  border: 2px solid rgba(223, 232, 220, 0.6); /* contorno verde clarito */
+  box-shadow: 0 8px 25px rgba(0,0,0,0.07);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+  opacity: 0; /* invisible hasta que cargue */
+}
+
+.mapa-container iframe.loaded {
+  opacity: 1; /* aparece cuando carga */
+}
+
+.mapa-container .loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: Georgia, serif;
+  background: rgba(223, 232, 220, 0.3);
+  padding: 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  color: var(--verde-oscuro);
+  font-size: 18px;
+  text-align: center;
+  pointer-events: none;
+}
+
+.mapa-container iframe:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.1);
+}
+
+
+/* REGALOS */
+.regalo-box{
+  background:white;
+  padding:70px;
+  max-width:850px;
+  margin:auto;
+  border-radius:15px;
+  box-shadow:0 8px 25px rgba(0,0,0,0.05);
+  font-family:Georgia, serif;
+  border: 2px solid rgba(223, 232, 220, 0.6); /* contorno verde clarito */
+  transition: all 0.3s ease;
+}
+
+.regalo-box:hover{
+  transform: scale(1.02);
+  box-shadow:0 12px 35px rgba(0,0,0,0.1);
+}
+
+/* FORM */
+form{
+  max-width:600px;
+  margin:auto;
+  text-align:left;
+  font-family:Georgia, serif;
+  background:white;
+  border: 2px solid rgba(223, 232, 220, 0.6); /* contorno verde clarito */
+  border-radius:20px;
+  padding:25px 30px;
+  box-shadow:0 8px 25px rgba(0,0,0,0.07);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+form:hover {
+  transform: scale(1.01);
+  box-shadow:0 12px 35px rgba(0,0,0,0.1);
+}
+
+input, textarea{
+  width:100%;
+  padding:16px;
+  margin:10px 0 25px 0;
+  border:1px solid #ccc;
+  border-radius:10px;
+  font-family:Georgia, serif;
+  font-size:16px;
+  transition:all 0.25s ease;
+  outline:none;
+}
+
+input:focus, textarea:focus{
+  border-color:var(--icon-btn-color);
+  box-shadow:0 0 0 3px rgba(138,158,120,0.15);
+}
+
+textarea{
+  resize:none;
+  height:130px;
+}
+
+/* FOOTER */
+.footer{
+  background: linear-gradient(to bottom right, #c0d0bd, #8a9e78);
+  color:white;
+  padding:90px 20px;
+  font-family:Georgia, serif;
+}
+
+.corazon{
+  font-size:38px;
+  margin-bottom:25px;
+}
+
+/* RESPONSIVE */
+@media(max-width:500px){
+  .nombres{font-size:60px;}
+  .amp{font-size:40px;}
+  .casamos{font-size:22px;}
+}
+
+/* ✨ Animaciones */
+@keyframes floatFlower {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ✨ Animación suave de nombres y fecha */
+.nombres,
+.casamos,
+.fecha {
+  transition: transform 0.5s ease, letter-spacing 0.5s ease;
+}
+
+.nombres:hover,
+.casamos:hover,
+.fecha:hover {
+  transform: scale(1.02) translateY(-2px);
+  letter-spacing: 2px;
+}
+
+
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+  <div class="bloque">
+   <img src="rama.svg" alt="Decoración floral" class="floral-img">
+    <h1 class="nombres">
+      Dama <span class="amp">&</span> David
+    </h1>
+    <p class="casamos">¡NOS CASAMOS!</p>
+    <p class="fecha">10 de Octubre 2026 · 16:30 HS</p>
+  </div>
+</section>
+
+<section class="countdown-section">
+  <div class="bloque">
+    <h2 class="titulo-seccion">Faltan</h2>
+    <div class="countdown">
+      <div class="box"><h3 id="dias">0</h3><p>Días</p></div>
+      <div class="box"><h3 id="horas">0</h3><p>Horas</p></div>
+      <div class="box"><h3 id="minutos">0</h3><p>Minutos</p></div>
+      <div class="box"><h3 id="segundos">0</h3><p>Segundos</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="detalles">
+  <div class="bloque">
+    <h2 class="titulo-seccion">Detalles del Evento</h2>
+    <div class="cards">
+      <div class="card">
+        <svg class="lucide lucide-calendar event-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="4" width="18" height="18" rx="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        <h3>Fecha</h3>
+        <p>10 de Octubre 2026</p>
+      </div>
+      <div class="card">
+        <svg class="lucide lucide-clock event-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        <h3>Hora</h3>
+        <p>16:30 HS</p>
+      </div>
+      <div class="card">
+        <svg class="lucide lucide-map-pin event-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path d="M21 10c0 6-9 12-9 12S3 16 3 10a9 9 0 0 1 18 0z"></path>
+          <circle cx="12" cy="10" r="3"></circle>
+        </svg>
+        <h3>Lugar</h3>
+        <p>Quinta Segunda Generación</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="bloque">
+    <h2 class="titulo-seccion">Ubicación</h2>
+    <div class="mapa-container">
+  <div class="loader">Cargando mapa...</div>
+  <iframe src="https://www.google.com/maps?q=Quinta+Segunda+Generación&output=embed" loading="lazy"></iframe>
+</div>
+
+    <br>
+    <a class="btn" href="https://maps.app.goo.gl/Gr4DtcZxTG3T6BJV6" target="_blank">Cómo llegar</a>
+  </div>
+</section>
+
+
+<section style="background:var(--crema);">
+  <div class="bloque">
+    <div class="regalo-box">
+      <h2 class="titulo-seccion">Lista de Regalos</h2>
+      <p>
+        Tu presencia es nuestro mejor regalo,<br>
+        pero si deseas obsequiarnos algo, hemos preparado una lista de sugerencias.
+      </p>
+      <a class="btn" href="https://docs.google.com/spreadsheets/d/1ZSdb7aKlq76kTm__BtwHYZTzV9-BTuh6_e9ajlNGyQg/edit?usp=sharing" target="_blank">
+        Ver lista de regalos
+      </a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="bloque">
+    <h2 class="titulo-seccion">Confirmación de Asistencia</h2>
+
+    <form id="asistenciaForm" action="https://script.google.com/macros/s/AKfycby1W1AKUAelwELRSQN7gk0oj5Dfp_AOYkXsB5eGX7k3A35cnS0IhwgS4Sb_w1yKtQm2/exec">
+
+      <label for="nombre">Nombre</label>
+      <input type="text" id="nombre" name="nombre" required>
+
+      <label for="cantidad">Cantidad de personas</label>
+      <input type="number" id="cantidad" name="cantidad" required min="1">
+
+      <label for="telefono">Teléfono</label>
+      <input type="tel" id="telefono" name="telefono" required>
+
+      <label for="mensaje">Mensaje</label>
+      <textarea id="mensaje" name="mensaje"></textarea>
+
+      <button type="submit" class="btn">Confirmar asistencia</button>
+
+    </form>
+
+    <p id="respuesta" style="margin-top:20px;font-family:Georgia,serif;"></p>
+
+  </div>
+</section>
+
+<section class="footer">
+  <div class="corazon">♡</div>
+  <h2>Dama & David</h2>
+  <p>10 de Octubre 2026</p>
+</section>
+
+<script>
+const fechaBoda = new Date("2026-10-10T16:30:00").getTime();
+const countdownInterval = setInterval(function(){
+  const ahora = new Date().getTime();
+  const diferencia = fechaBoda - ahora;
+  if(diferencia <= 0){
+    clearInterval(countdownInterval);
+    document.querySelector(".countdown-section .countdown").innerHTML = "<p>¡Hoy es el gran día! 🎉</p>";
+    return;
+  }
+  document.getElementById("dias").innerText = Math.floor(diferencia/(1000*60*60*24));
+  document.getElementById("horas").innerText = Math.floor((diferencia%(1000*60*60*24))/(1000*60*60));
+  document.getElementById("minutos").innerText = Math.floor((diferencia%(1000*60*60))/(1000*60));
+  document.getElementById("segundos").innerText = Math.floor((diferencia%(1000*60))/1000);
+},1000);
+</script>
+<script>
+const mapa = document.querySelector('.mapa-container iframe');
+const loader = document.querySelector('.mapa-container .loader');
+
+mapa.addEventListener('load', () => {
+  mapa.classList.add('loaded');  // hace visible el iframe
+  loader.style.display = 'none';  // oculta el loader
+});
+</script>
+
+<script>
+const form = document.getElementById('asistenciaForm');
+const respuesta = document.getElementById('respuesta');
+
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const datos = {
+    nombre: form.nombre.value,
+    cantidad: form.cantidad.value,
+    telefono: form.telefono.value,
+    mensaje: form.mensaje.value
+  };
+
+  fetch(form.action, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(datos)
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.status === "success") {
+      respuesta.innerHTML = "✅ ¡Gracias por confirmar! Nos vemos en el gran día 💚";
+      respuesta.style.color = "#4e5f45";
+      form.reset();
+    } else {
+      respuesta.innerHTML = "❌ Hubo un error. Intentá nuevamente.";
+      respuesta.style.color = "red";
+    }
+  })
+  .catch(error => {
+    respuesta.innerHTML = "❌ Error de conexión.";
+    respuesta.style.color = "red";
+    console.error(error);
+  });
+});
+</script>
+
+</body>
+</html>
