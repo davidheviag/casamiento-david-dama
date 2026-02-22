@@ -542,6 +542,20 @@ function mostrarMensaje() {
     });
   </script>
   
+<script>
+  document.getElementById("asistenciaForm").addEventListener("submit", function() {
+    
+    const form = this;
+
+    setTimeout(function() {
+      form.reset(); // 👈 limpia el formulario
+      document.getElementById("mensajeConfirmacion").style.display = "block";
+    }, 500);
+
+  });
+</script>
+  
+
   
 </body>
 </html>
