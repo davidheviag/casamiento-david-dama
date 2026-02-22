@@ -106,37 +106,28 @@ section{
   font-family:'Cinzel', serif;
 }
 
-/* CUENTA REGRESIVA - Mejorada */
+/* CUENTA REGRESIVA */
 .box {
-  background: white; /* Mantiene tu fondo actual */
+  background: white;
   padding: 45px;
   border-radius: 18px;
   min-width: 150px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Sombra más profunda */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
   transition: all 0.3s ease;
-  border: 2px solid rgba(223, 232, 220, 0.6); /* contorno verde clarito */
+  border: 2px solid rgba(223, 232, 220, 0.6);
 }
 
-/* Efecto al pasar el mouse */
 .box:hover {
-  transform: scale(1.03); /* se agranda suavemente */
-  box-shadow: 0 20px 50px rgba(0,0,0,0.15); /* sombra más pronunciada al hover */
+  transform: scale(1.03);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.15);
 }
 
-/* Animación de pulso suave en los números */
 .box h3 {
   color: var(--icon-btn-color);
   font-size: 55px;
   animation: pulse 2.5s ease-in-out infinite;
 }
 
-/* Pulso */
-@keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); } /* crece un 5% suavemente */
-}
-
-/* Los títulos debajo de cada número */
 .box p {
   font-size: 18px;
   color: var(--verde);
@@ -165,7 +156,7 @@ section{
   flex-direction:column;
   align-items:center;
   transition:all 0.3s ease;
-  border: 2px solid rgba(223, 232, 220, 0.6); /* contorno verde clarito */
+  border: 2px solid rgba(223, 232, 220, 0.6);
 }
 
 .card:hover{
@@ -187,7 +178,7 @@ section{
   font-weight:400;
 }
 
-/* BOTONES MEJORADOS */
+/* BOTONES */
 .btn{
   display:inline-block;
   margin-top:30px;
@@ -213,7 +204,7 @@ button.btn{
   border:none;
 }
 
-/* MAPA CON LOADER */
+/* MAPA */
 .mapa-container {
   position: relative;
   max-width: 900px;
@@ -225,14 +216,14 @@ button.btn{
   width: 100%;
   height: 100%;
   border-radius: 15px;
-  border: 2px solid rgba(223, 232, 220, 0.6); /* contorno verde clarito */
+  border: 2px solid rgba(223, 232, 220, 0.6);
   box-shadow: 0 8px 25px rgba(0,0,0,0.07);
   transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
-  opacity: 0; /* invisible hasta que cargue */
+  opacity: 0;
 }
 
 .mapa-container iframe.loaded {
-  opacity: 1; /* aparece cuando carga */
+  opacity: 1;
 }
 
 .mapa-container .loader {
@@ -256,7 +247,6 @@ button.btn{
   box-shadow: 0 12px 35px rgba(0,0,0,0.1);
 }
 
-
 /* REGALOS */
 .regalo-box{
   background:white;
@@ -266,7 +256,7 @@ button.btn{
   border-radius:15px;
   box-shadow:0 8px 25px rgba(0,0,0,0.05);
   font-family:Georgia, serif;
-  border: 2px solid rgba(223, 232, 220, 0.6); /* contorno verde clarito */
+  border: 2px solid rgba(223, 232, 220, 0.6);
   transition: all 0.3s ease;
 }
 
@@ -282,7 +272,7 @@ form{
   text-align:left;
   font-family:Georgia, serif;
   background:white;
-  border: 2px solid rgba(223, 232, 220, 0.6); /* contorno verde clarito */
+  border: 2px solid rgba(223, 232, 220, 0.6);
   border-radius:20px;
   padding:25px 30px;
   box-shadow:0 8px 25px rgba(0,0,0,0.07);
@@ -331,11 +321,40 @@ textarea{
 
 /* RESPONSIVE */
 @media(max-width:500px){
+
+  /* Secciones más compactas */
+  section{
+    padding:60px 15px;
+  }
+
+  /* Nombres y textos */
   .nombres{font-size:60px;}
   .amp{font-size:40px;}
   .casamos{font-size:22px;}
-}
+  .fecha{font-size:20px; line-height:1.4;}
+  .titulo-seccion{font-size:28px; margin-bottom:40px;}
 
+  /* Countdown y Cards ocupen más ancho */
+  .cards .card,
+  .countdown .box{
+    width:90%;
+    margin:10px auto;
+  }
+
+  /* Formularios más compactos */
+  form{padding:15px 20px;}
+  input, textarea{padding:12px; margin:8px 0 20px 0;}
+
+  /* Botones más pequeños */
+  .btn{padding:12px 25px; font-size:16px;}
+
+  /* Mapa más pequeño */
+  .mapa-container{height:300px;}
+
+  /* Imagen floral más chica */
+  .floral-img{width:280px; margin-bottom:20px;}
+}
+  
 /* ✨ Animaciones */
 @keyframes floatFlower {
   0% { transform: translateY(0px); }
@@ -348,7 +367,6 @@ textarea{
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ✨ Animación suave de nombres y fecha */
 .nombres,
 .casamos,
 .fecha {
@@ -362,6 +380,38 @@ textarea{
   letter-spacing: 2px;
 }
 
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+  @media(max-width:500px){
+  .hero .bloque{
+    padding-top:40px;
+    padding-bottom:40px;
+  }
+
+  .nombres{
+    font-size:50px; /* un poco más pequeño */
+  }
+
+  .amp{
+    font-size:35px;
+  }
+
+  .casamos{
+    font-size:20px;
+  }
+
+  .fecha{
+    font-size:18px;
+  }
+
+  .floral-img{
+    width:240px;
+    margin-bottom:15px;
+  }
+}
 
 </style>
 </head>
