@@ -466,6 +466,8 @@ textarea{
     
 
       <iframe name="hidden_iframe" style="display:none;"></iframe>
+
+      <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
       
       <label for="nombres">Nombres</label>
       <input type="text" id="nombres" name="nombres" required>
@@ -543,15 +545,12 @@ function mostrarMensaje() {
   </script>
   
 <script>
-  document.getElementById("asistenciaForm").addEventListener("submit", function() {
-    
-    const form = this;
+  const form = document.getElementById("asistenciaForm");
+  const iframe = document.getElementById("hidden_iframe");
 
-    setTimeout(function() {
-      form.reset(); // 👈 limpia el formulario
-      document.getElementById("mensajeConfirmacion").style.display = "block";
-    }, 500);
-
+  iframe.addEventListener("load", function() {
+    form.reset(); // 👈 limpia el formulario
+    document.getElementById("mensajeConfirmacion").style.display = "block";
   });
 </script>
   
