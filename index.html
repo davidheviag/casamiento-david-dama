@@ -8,7 +8,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
-  
 :root{
   --verde-claro:#dfe8dc;
   --verde:#6b7d5c;
@@ -102,16 +101,13 @@ section{
 .countdown{
   display:flex;
   justify-content:center;
-  gap:20px;
-  flex-wrap:nowrap;
-  overflow-x:auto;
-  padding:0 10px;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
+  gap:50px;
+  flex-wrap:wrap;
+  font-family:'Cinzel', serif;
 }
 
-.countdown .box{
-  flex:0 0 auto;
+/* CUENTA REGRESIVA */
+.box {
   background: white;
   padding: 45px;
   border-radius: 18px;
@@ -121,18 +117,18 @@ section{
   border: 2px solid rgba(223, 232, 220, 0.6);
 }
 
-.countdown .box:hover {
+.box:hover {
   transform: scale(1.03);
   box-shadow: 0 20px 50px rgba(0,0,0,0.15);
 }
 
-.countdown .box h3 {
+.box h3 {
   color: var(--icon-btn-color);
   font-size: 55px;
   animation: pulse 2.5s ease-in-out infinite;
 }
 
-.countdown .box p {
+.box p {
   font-size: 18px;
   color: var(--verde);
 }
@@ -146,16 +142,11 @@ section{
 .cards{
   display:flex;
   justify-content:center;
-  gap:20px;
-  flex-wrap:nowrap;
-  overflow-x:auto;
-  padding:0 10px;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
+  gap:40px;
+  flex-wrap:wrap;
 }
 
-.cards .card{
-  flex:0 0 auto;
+.card{
   background:white;
   padding:45px;
   width:260px;
@@ -168,7 +159,7 @@ section{
   border: 2px solid rgba(223, 232, 220, 0.6);
 }
 
-.cards .card:hover{
+.card:hover{
   transform:translateY(-6px);
   box-shadow:0 18px 40px rgba(0,0,0,0.08);
 }
@@ -180,7 +171,7 @@ section{
   margin-bottom:15px;
 }
 
-.cards .card h3{
+.card h3{
   font-size:22px;
   margin-bottom:10px;
   color:var(--titulo-color);
@@ -336,33 +327,19 @@ textarea{
     padding:60px 15px;
   }
 
-  /* Hero Section */
-  .hero .bloque{
-    padding-top:40px;
-    padding-bottom:40px;
-  }
-  .nombres{font-size:50px;}
-  .amp{font-size:35px;}
-  .casamos{font-size:20px;}
-  .fecha{font-size:18px; line-height:1.4;}
-  .floral-img{width:240px; margin-bottom:15px;}
-
-  /* Countdown y Cards en línea */
-  .countdown, .cards{
-    flex-wrap:nowrap;
-    overflow-x:auto;
-    padding:0 10px;
-    -webkit-overflow-scrolling: touch;
-    scroll-behavior: smooth;
-  }
-  .countdown .box, .cards .card{
-    flex:0 0 auto;
-    width:auto;
-    margin:10px 5px;
-  }
-
-  /* Títulos y textos */
+  /* Nombres y textos */
+  .nombres{font-size:60px;}
+  .amp{font-size:40px;}
+  .casamos{font-size:22px;}
+  .fecha{font-size:20px; line-height:1.4;}
   .titulo-seccion{font-size:28px; margin-bottom:40px;}
+
+  /* Countdown y Cards ocupen más ancho */
+  .cards .card,
+  .countdown .box{
+    width:90%;
+    margin:10px auto;
+  }
 
   /* Formularios más compactos */
   form{padding:15px 20px;}
@@ -373,9 +350,12 @@ textarea{
 
   /* Mapa más pequeño */
   .mapa-container{height:300px;}
-}
 
-/* Animaciones */
+  /* Imagen floral más chica */
+  .floral-img{width:280px; margin-bottom:20px;}
+}
+  
+/* ✨ Animaciones */
 @keyframes floatFlower {
   0% { transform: translateY(0px); }
   50% { transform: translateY(-8px); }
@@ -404,7 +384,33 @@ textarea{
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.05); }
 }
-  
+  @media(max-width:500px){
+  .hero .bloque{
+    padding-top:40px;
+    padding-bottom:40px;
+  }
+
+  .nombres{
+    font-size:50px; /* un poco más pequeño */
+  }
+
+  .amp{
+    font-size:35px;
+  }
+
+  .casamos{
+    font-size:20px;
+  }
+
+  .fecha{
+    font-size:18px;
+  }
+
+  .floral-img{
+    width:240px;
+    margin-bottom:15px;
+  }
+}
 </style>
 </head>
 
