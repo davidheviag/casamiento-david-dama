@@ -556,12 +556,16 @@ document.addEventListener("DOMContentLoaded", function() {
       method: "POST",
       body: data
     })
-    .then(response => {
-      if (response.ok) {
-        form.reset(); // 👈 limpia
-        mensaje.style.display = "block"; // 👈 muestra mensaje
-      }
-    })
+    .then(() => {
+  form.reset();
+
+  const mensaje = document.getElementById("mensajeConfirmacion");
+  if (mensaje) {
+    mensaje.style.display = "block";
+  } else {
+    alert("Mensaje no encontrado");
+  }
+})
     .catch(error => {
       console.error("Error:", error);
     });
