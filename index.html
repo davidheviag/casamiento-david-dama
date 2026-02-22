@@ -458,8 +458,8 @@ textarea{
   <div class="bloque">
     <h2 class="titulo-seccion">Confirmación de Asistencia</h2>
 
-    <form id="asistenciaForm" action="https://script.google.com/macros/s/AKfycby1W1AKUAelwELRSQN7gk0oj5Dfp_AOYkXsB5eGX7k3A35cnS0IhwgS4Sb_w1yKtQm2/exec">
-
+    <form id="asistenciaForm" action="https://script.google.com/macros/s/AKfycbxGSTj41hB9zNLmRVIYL-Xy5LbJ1NcHNxbThbrYO_OUrsmlRTzV9boMvu7wJazuq8oM/exec">
+      
       <label for="nombre">Nombre</label>
       <input type="text" id="nombre" name="nombre" required>
 
@@ -529,14 +529,11 @@ form.addEventListener('submit', function(e) {
 
   fetch(form.action, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(datos)
+    body: new URLSearchParams(datos)
   })
-  .then(res => res.json())
+  .then(res => res.text())
   .then(data => {
-    if (data.status === "success") {
+    if (data === "success") {
       respuesta.innerHTML = "✅ ¡Gracias por confirmar! Nos vemos en el gran día 💚";
       respuesta.style.color = "#4e5f45";
       form.reset();
