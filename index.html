@@ -547,10 +547,20 @@ function mostrarMensaje() {
 <script>
   const form = document.getElementById("asistenciaForm");
   const iframe = document.getElementById("hidden_iframe");
+  const mensaje = document.getElementById("mensajeConfirmacion");
+
+  let enviado = false;
+
+  form.addEventListener("submit", function() {
+    enviado = true;
+  });
 
   iframe.addEventListener("load", function() {
-    form.reset(); // 👈 limpia el formulario
-    document.getElementById("mensajeConfirmacion").style.display = "block";
+    if (enviado) {
+      form.reset(); // limpia el formulario
+      mensaje.style.display = "block"; // muestra el mensaje
+      enviado = false; // reinicia el estado
+    }
   });
 </script>
   
