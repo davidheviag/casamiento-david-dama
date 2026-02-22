@@ -86,7 +86,7 @@ section{
   transition: transform 0.5s ease, letter-spacing 0.5s ease;
 }
 
-/* Countdown en línea correctamente */
+/* Countdown en línea con tamaño de número adaptable */
 .countdown{
   display:flex;
   justify-content:center;
@@ -95,45 +95,32 @@ section{
 }
 
 .countdown .box{
-  flex: 0 1 80px; /* crece si hay espacio, pero mínimo 80px */
-  min-width: 80px;
-  max-width: 120px; /* evita que se estiren demasiado */
-  padding:20px;
+  flex:1;                  /* cada caja ocupa igual espacio */
+  min-width:70px;          /* nunca demasiado pequeña */
+  max-width:120px;         /* evita que se estire mucho */
+  padding:15px 10px;
   border-radius:18px;
   background:white;
   box-shadow:0 10px 30px rgba(0,0,0,0.1);
   text-align:center;
+  border:2px solid rgba(223, 232, 220, 0.6);
   transition: all 0.3s ease;
-  border: 2px solid rgba(223, 232, 220, 0.6);
 }
 
 .countdown .box h3{
   color: var(--icon-btn-color);
-  font-size:40px; /* reducido para que no se salga de la caja */
   margin:0;
+  font-size: clamp(20px, 6vw, 45px); /* tamaño adaptable según pantalla */
   animation: pulse 2.5s ease-in-out infinite;
+  word-break: break-word; /* evita que el número se desborde */
 }
 
 .countdown .box p{
-  font-size:16px;
+  font-size: clamp(10px, 2.5vw, 16px); /* también adaptable */
   margin:0;
   color: var(--verde);
 }
-
-/* Ajuste extra para móviles */
-@media(max-width:500px){
-  .countdown .box{
-    flex:0 1 60px;
-    min-width:60px;
-    padding:15px;
-  }
-  .countdown .box h3{
-    font-size:28px;
-  }
-  .countdown .box p{
-    font-size:12px;
-  }
-}
+  
 /* DETALLES */
 .detalles{
   background:var(--crema);
