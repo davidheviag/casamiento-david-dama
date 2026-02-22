@@ -458,7 +458,13 @@ textarea{
   <div class="bloque">
     <h2 class="titulo-seccion">Confirmación de Asistencia</h2>
 
-    <form id="asistenciaForm" action="https://script.google.com/macros/s/AKfycbwHINYOK19_pDTkSwMpVVJPlbA9siwh2Yz6MeRt2um1-zK5YBn0LIADIGLr1iGQORWf/exec">
+    <form id="asistenciaForm"
+      action="https://script.google.com/macros/s/AKfycbwHINYOK19_pDTkSwMpVVJPlbA9siwh2Yz6MeRt2um1-zK5YBn0LIADIGLr1iGQORWf/exec"
+      method="POST"
+      target="hidden_iframe"
+      onsubmit="mostrarMensaje()">
+
+      <iframe name="hidden_iframe" style="display:none;"></iframe>
       
       <label for="nombre">Nombre</label>
       <input type="text" id="nombre" name="nombre" required>
@@ -514,40 +520,16 @@ mapa.addEventListener('load', () => {
 </script>
 
 <script>
-const form = document.getElementById('asistenciaForm');
-const respuesta = document.getElementById('respuesta');
+function mostrarMensaje() {
+  const respuesta = document.getElementById("respuesta");
 
-form.addEventListener('submit', function(e) {
-  e.preventDefault();
-
-  const datos = {
-    nombre: form.nombre.value,
-    cantidad: form.cantidad.value,
-    telefono: form.telefono.value,
-    mensaje: form.mensaje.value
-  };
-
-  fetch(form.action, {
-  method: "POST",
-  mode: "no-cors",
-  body: new URLSearchParams(datos)
-})
-.then(() => {
-  respuesta.innerHTML = "✅ ¡Gracias por confirmar! Nos vemos en el gran día 💚";
-  respuesta.style.color = "#4e5f45";
-  form.reset();
-})
-.catch(() => {
-  respuesta.innerHTML = "❌ Error de conexión.";
-  respuesta.style.color = "red";
-})
-  .catch(error => {
-    respuesta.innerHTML = "❌ Error de conexión.";
-    respuesta.style.color = "red";
-    console.error(error);
-  });
-});
+  setTimeout(() => {
+    respuesta.innerHTML = "✅ ¡Gracias por confirmar! Nos vemos en el gran día 💚";
+    respuesta.style.color = "#4e5f45";
+    document.getElementById("asistenciaForm").reset();
+  }, 1000);
+}
 </script>
-
+  
 </body>
 </html>
