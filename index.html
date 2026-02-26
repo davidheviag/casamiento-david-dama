@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
 <title>David & Dama - ¡Nos Casamos!</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
@@ -102,6 +103,7 @@ section{
   text-decoration:none;
   border:none;
   display:block;
+  white-space: nowrap;
 }
 
 /* COUNTDOWN */
@@ -124,6 +126,10 @@ section{
   .titulo-seccion{
     margin-bottom:50px;
     font-size:28px;
+  }
+
+  .fecha{
+    font-size:18px;
   }
 }
 
@@ -153,7 +159,7 @@ section{
   margin:0;
   font-size: clamp(20px, 6vw, 45px); /* tamaño adaptable */
   animation: pulse 2.5s ease-in-out infinite;
-  word-break: break-word;
+  white-space: nowrap;
 }
 
 .countdown .box p{
@@ -389,6 +395,30 @@ textarea{
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.05); }
 }
+
+@media(max-width:768px){
+
+  
+
+  .nombres{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+    font-size:65px;
+  }
+
+  .amp{
+    margin:0;
+  }
+
+}
+  
+.texto-regalo{
+  max-width:600px;
+  margin:20px auto 0 auto;
+  line-height:1.9;
+}
   
 </style>
 </head>
@@ -470,9 +500,8 @@ textarea{
   <div class="bloque">
     <div class="regalo-box">
       <h2 class="titulo-seccion">Lista de Regalos</h2>
-      <p>
-        Tu presencia es nuestro mejor regalo,<br>
-        pero si deseas obsequiarnos algo, hemos preparado una lista de sugerencias.
+      <p class="texto-regalo">
+       Tu presencia es nuestro mejor regalo, pero si deseas obsequiarnos algo, hemos preparado una lista de sugerencias.
       </p>
       <a class="btn" href="https://docs.google.com/spreadsheets/d/1ZSdb7aKlq76kTm__BtwHYZTzV9-BTuh6_e9ajlNGyQg/edit?usp=sharing" target="_blank">
         Ver lista de regalos
