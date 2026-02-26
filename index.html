@@ -71,6 +71,16 @@ section{
   margin-bottom:15px;
 }
 
+.nombres{
+  overflow: visible;
+  padding-right: 10px;
+  line-height: 1.2;
+}
+
+.nombres span {
+  display: inline-block;
+}
+  
 .amp{
   font-family:'Cinzel', serif;
   color:var(--verde);
@@ -128,24 +138,33 @@ section{
     font-size:28px;
   }
 
+
+
   .fecha{
     font-size:18px;
   }
 }
 
 /* Countdown en línea con tamaño de número adaptable */
-.countdown{
-  display:flex;
-  justify-content:center;
-  gap:15px;
-  flex-wrap:nowrap;
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 25px; /* separa los cuadros */
+  flex-wrap: nowrap;
 }
 
 .countdown .box{
-  flex:1;                  
-  min-width:70px;          
-  max-width:120px;         
-  padding:15px 10px;
+  flex: 1;
+  min-width: 110px; /* más espacio para 3 dígitos */
+  max-width: 140px;
+  padding: 20px 15px;
+}
+
+.countdown .box{
+  flex:1;
+  min-width:120px;   /* más seguro para 3 dígitos */
+  max-width:150px;
+  padding:25px 15px;
   border-radius:18px;
   background:white;
   box-shadow:0 10px 30px rgba(0,0,0,0.1);
@@ -166,6 +185,21 @@ section{
   font-size: clamp(10px, 2.5vw, 16px);
   margin:0;
   color: var(--verde);
+}
+
+  .countdown-number {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+ @media (min-width: 768px) {
+  .countdown {
+    gap: 40px;
+}
+
+  .countdown-item {
+    min-width: 100px;
+  }
 }
 
 /* DETALLES */
@@ -386,8 +420,10 @@ textarea{
 .nombres:hover,
 .casamos:hover,
 .fecha:hover {
-  transform: scale(1.02) translateY(-2px);
+  transform: scale(1.01) translateY(-2px);
   letter-spacing: 2px;
+  transition: transform 0.3s ease;
+  transform-origin: center;
 }
 
 /* Pulso */
@@ -414,10 +450,12 @@ textarea{
 
 }
   
-.texto-regalo{
-  max-width:600px;
-  margin:20px auto 0 auto;
-  line-height:1.9;
+
+.texto-regalo {
+  text-align: center;
+  max-width: 320px;
+  margin: 0 auto;
+  line-height: 1.6;
 }
   
 </style>
@@ -501,8 +539,10 @@ textarea{
     <div class="regalo-box">
       <h2 class="titulo-seccion">Lista de Regalos</h2>
       <p class="texto-regalo">
-       Tu presencia es nuestro mejor regalo, pero si deseas obsequiarnos algo, hemos preparado una lista de sugerencias.
-      </p>
+  Tu presencia es nuestro mejor regalo,<br>
+  pero si deseas obsequiarnos algo,<br>
+  hemos preparado una lista de sugerencias.
+</p>
       <a class="btn" href="https://docs.google.com/spreadsheets/d/1ZSdb7aKlq76kTm__BtwHYZTzV9-BTuh6_e9ajlNGyQg/edit?usp=sharing" target="_blank">
         Ver lista de regalos
       </a>
@@ -515,8 +555,8 @@ textarea{
     <h2 class="titulo-seccion">Confirmación de Asistencia</h2>
 
     <form id="asistenciaForm"
-      action="https://script.google.com/macros/s/AKfycbwtqryMNTni9qIFppo8JP2QiiMwKoxtgamgd6s2gLmXT8Z8nxx8O_O5z08onvrxoRla/exec"
-      method="POST"
+  action="https://script.google.com/macros/s/AKfycbwtqryMNTni9qIFppo8JP2QiiMwKoxtgamgd6s2gLmXT8Z8nxx8O_O5z08onvrxoRla/exec"
+  method="POST">
 
 
     
@@ -581,26 +621,8 @@ mapa.addEventListener('load', () => {
 });
 </script>
 
-<script>
-function mostrarMensaje() {
-  const respuesta = document.getElementById("respuesta");
 
-  setTimeout(() => {
-    respuesta.innerHTML = "✅ ¡Gracias por confirmar! Nos vemos en el gran día 💚";
-    respuesta.style.color = "#4e5f45";
-    document.getElementById("asistenciaForm").reset();
-  }, 1000);
-}
-</script>
 
-<script>
-    document.getElementById("asistenciaForm").addEventListener("submit", function() {
-      setTimeout(function() {
-        document.getElementById("mensajeConfirmacion").style.display = "block";
-      }, 500);
-    });
-  </script>
-  
 <script>
 document.addEventListener("DOMContentLoaded", function() {
 
