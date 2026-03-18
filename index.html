@@ -187,64 +187,7 @@ section{
     font-size: 0.85rem;
   }
 }
-
-/* Countdown en línea con tamaño de número adaptable */
-.countdown {
-  display: flex;
-  justify-content: center;
-  gap: 25px; /* separa los cuadros */
-  flex-wrap: nowrap;
-}
-
-.countdown .box{
-  flex: 1;
-  min-width: 110px; /* más espacio para 3 dígitos */
-  max-width: 140px;
-  padding: 20px 15px;
-}
-
-.countdown .box{
-  flex:1;
-  min-width:120px;   /* más seguro para 3 dígitos */
-  max-width:150px;
-  padding:25px 15px;
-  border-radius:18px;
-  background:white;
-  box-shadow:0 10px 30px rgba(0,0,0,0.1);
-  text-align:center;
-  border:2px solid rgba(223, 232, 220, 0.6);
-  transition: all 0.3s ease;
-}
-
-.countdown .box h3{
-  color: var(--icon-btn-color);
-  margin:0;
-  font-size: clamp(20px, 6vw, 45px); /* tamaño adaptable */
-  animation: pulse 2.5s ease-in-out infinite;
-  white-space: nowrap;
-}
-
-.countdown .box p{
-  font-size: clamp(10px, 2.5vw, 16px);
-  margin:0;
-  color: var(--verde);
-}
-
-  .countdown-number {
-  font-size: 2.5rem;
-  font-weight: 600;
-}
-
- @media (min-width: 768px) {
-  .countdown {
-    gap: 40px;
-}
-
-  .countdown-item {
-    min-width: 100px;
-  }
-}
-
+  
 /* DETALLES */
 .detalles{
   background:var(--crema);
