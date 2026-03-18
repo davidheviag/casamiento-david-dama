@@ -116,13 +116,64 @@ section{
   white-space: nowrap;
 }
 
-/* COUNTDOWN */
-.countdown-section{
-  background:white;
-  font-family:Georgia, serif;
-  min-height:550px;
-  display:flex;
-  align-items:center;
+/* COUNTDOWN MEJORADO */
+.countdown-section {
+  background: white;
+  padding: 80px 20px;
+  display: flex;
+  align-items: center;
+}
+
+.countdown {
+  display: grid;
+  /* 2 columnas en celu, 4 en compu */
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 15px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.countdown .box {
+  background: white;
+  padding: 20px 10px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  border: 2px solid rgba(223, 232, 220, 0.6);
+  text-align: center;
+}
+
+.countdown .box h3 {
+  color: var(--icon-btn-color);
+  margin: 0;
+  font-size: 2.5rem; /* Tamaño fijo base */
+  font-family: 'Cinzel', serif;
+  line-height: 1;
+}
+
+.countdown .box p {
+  font-size: 0.9rem;
+  margin-top: 5px;
+  color: var(--verde);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Ajuste para tablets y computadoras */
+@media(min-width: 768px) {
+  .countdown {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    max-width: 900px;
+  }
+  
+  .countdown .box h3 {
+    font-size: 3.5rem;
+  }
+}
+
+/* Animación de pulso solo a los números */
+.countdown .box h3 {
+  animation: pulse 2.5s ease-in-out infinite;
 }
 
 .titulo-seccion{
@@ -602,7 +653,8 @@ const countdownInterval = setInterval(function(){
   const diferencia = fechaBoda - ahora;
   if(diferencia <= 0){
     clearInterval(countdownInterval);
-    document.querySelector(".countdown-section .countdown").innerHTML = "<p>¡Hoy es el gran día! 🎉</p>";
+    document.querySelector(".countdown").style.display = "block";
+    document.querySelector(".countdown").innerHTML = "<h3 style='font-size:2rem; color:var(--verde-oscuro)'>¡Hoy es el gran día! 🎉</h3>";
     return;
   }
   document.getElementById("dias").innerText = Math.floor(diferencia/(1000*60*60*24));
