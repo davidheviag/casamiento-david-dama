@@ -116,20 +116,19 @@ section{
   white-space: nowrap;
 }
 
-/* COUNTDOWN MEJORADO */
+/* COUNTDOWN REPARADO PARA CELULAR */
 .countdown-section {
   background: white;
-  padding: 80px 20px;
-  display: flex;
-  align-items: center;
+  padding: 60px 15px; /* Reduje un poco el padding */
+  text-align: center;
 }
 
 .countdown {
   display: grid;
-  /* 2 columnas en celu, 4 en compu */
+  /* Esto es la clave: 2 columnas en celu, 4 en compu */
   grid-template-columns: repeat(2, 1fr); 
   gap: 15px;
-  max-width: 600px;
+  max-width: 350px; /* Ancho controlado para que no se escape de la pantalla */
   margin: 0 auto;
 }
 
@@ -137,40 +136,53 @@ section{
   background: white;
   padding: 20px 10px;
   border-radius: 15px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
   border: 2px solid rgba(223, 232, 220, 0.6);
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .countdown .box h3 {
   color: var(--icon-btn-color);
   margin: 0;
-  font-size: 2.5rem; /* Tamaño fijo base */
+  font-size: 2rem; /* Tamaño más cómodo para celu */
   font-family: 'Cinzel', serif;
-  line-height: 1;
+  line-height: 1.1;
 }
 
 .countdown .box p {
-  font-size: 0.9rem;
-  margin-top: 5px;
+  font-size: 0.75rem;
+  margin: 5px 0 0 0;
   color: var(--verde);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
-/* Ajuste para tablets y computadoras */
+/* Título de la sección siempre centrado */
+.titulo-seccion {
+  text-align: center;
+  width: 100%;
+  display: block;
+}
+
+/* Ajustes para Computadora (Pantallas grandes) */
 @media(min-width: 768px) {
   .countdown {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
-    max-width: 900px;
+    grid-template-columns: repeat(4, 1fr); /* 4 en línea */
+    max-width: 800px;
+    gap: 20px;
   }
   
   .countdown .box h3 {
-    font-size: 3.5rem;
+    font-size: 3rem;
+  }
+  
+  .countdown .box p {
+    font-size: 0.9rem;
   }
 }
-
 /* Animación de pulso solo a los números */
 .countdown .box h3 {
   animation: pulse 2.5s ease-in-out infinite;
