@@ -116,95 +116,75 @@ section{
   white-space: nowrap;
 }
 
-/* COUNTDOWN REPARADO PARA CELULAR */
+/* COUNTDOWN CENTRADO PERFECTO PARA CELULAR */
 .countdown-section {
   background: white;
-  padding: 60px 15px; /* Reduje un poco el padding */
+  padding: 50px 10px; /* Reduje padding para ganar espacio */
   text-align: center;
 }
 
 .countdown {
   display: grid;
-  /* Esto es la clave: 2 columnas en celu, 4 en compu */
+  /* 2 columnas iguales */
   grid-template-columns: repeat(2, 1fr); 
-  gap: 15px;
-  max-width: 350px; /* Ancho controlado para que no se escape de la pantalla */
-  margin: 0 auto;
+  gap: 12px; /* Espacio más compacto entre cuadros */
+  max-width: 320px; /* Ancho controlado para que no se escape de la pantalla */
+  margin: 0 auto; /* Centra el bloque entero horizontalmente */
+  justify-content: center; /* NUEVO: Centra las columnas dentro de la grilla */
+  align-content: center; /* NUEVO: Centra las filas si es necesario */
 }
 
 .countdown .box {
   background: white;
-  padding: 20px 10px;
-  border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-  border: 2px solid rgba(223, 232, 220, 0.6);
+  padding: 18px 8px; /* Padding interno reducido */
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  border: 1px solid rgba(223, 232, 220, 0.5); /* Borde más sutil */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
 .countdown .box h3 {
   color: var(--icon-btn-color);
   margin: 0;
-  font-size: 2rem; /* Tamaño más cómodo para celu */
+  font-size: 1.8rem; /* NUEVO: Número un poco más chico para que entre bien */
   font-family: 'Cinzel', serif;
-  line-height: 1.1;
+  line-height: 1;
 }
 
 .countdown .box p {
-  font-size: 0.75rem;
-  margin: 5px 0 0 0;
+  font-size: 0.7rem; /* Texto de 'Días', 'Horas' más chico */
+  margin: 4px 0 0 0;
   color: var(--verde);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
-/* Título de la sección siempre centrado */
+/* Título de la sección centrado por defecto */
 .titulo-seccion {
   text-align: center;
   width: 100%;
   display: block;
+  margin-bottom: 40px; /* Menos espacio abajo del título */
 }
 
 /* Ajustes para Computadora (Pantallas grandes) */
 @media(min-width: 768px) {
   .countdown {
     grid-template-columns: repeat(4, 1fr); /* 4 en línea */
-    max-width: 800px;
+    max-width: 750px;
     gap: 20px;
   }
   
   .countdown .box h3 {
-    font-size: 3rem;
+    font-size: 2.8rem;
   }
   
   .countdown .box p {
-    font-size: 0.9rem;
-  }
-}
-/* Animación de pulso solo a los números */
-.countdown .box h3 {
-  animation: pulse 2.5s ease-in-out infinite;
-}
-
-.titulo-seccion{
-  font-size:42px;
-  margin-bottom:80px; /* más separación */
-  color:var(--titulo-color);
-  font-weight:400;
-}
-
-@media(max-width:768px){
-  .titulo-seccion{
-    margin-bottom:50px;
-    font-size:28px;
-  }
-
-
-
-  .fecha{
-    font-size:18px;
+    font-size: 0.85rem;
   }
 }
 
